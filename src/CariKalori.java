@@ -1,6 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 import java.util.Scanner;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+/**
+ *
+ * @author Filbert Patricio
+ */
 public class CariKalori {
 
     DecimalFormat dfrmt = new DecimalFormat("#0.00");
@@ -20,6 +31,7 @@ public class CariKalori {
             System.out.println("====================================================================");
 
         } catch (InterruptedException e) {
+
         }
         try {
             for (int i = 0; i < 5; i++) {
@@ -51,9 +63,8 @@ public class CariKalori {
         System.out.println("6. Menghapus daftar olahraga");
         System.out.println("7. Melihat daftar makanan ");
         System.out.println("8. Mengedit daftar makanan");
-        System.out.println("9. Menghapus daftarakanan");
-        System.out.println("10. Target kalori hari ini : ");
-        System.out.println("11. Keluar"); 
+        System.out.println("9. Menghapus daftar makanan");
+        System.out.println("10. Keluar");
         System.out.print("Masukkan pilihan: ");
         pilih = scan.nextInt();
         return pilih;
@@ -87,11 +98,11 @@ public class CariKalori {
 
         do {
             System.out.print("Pria atau Wanita(P/W): ");
-            jeniskelamin = scan.next();
-            if (!jeniskelamin.equalsIgnoreCase("p") || !jeniskelamin.equalsIgnoreCase("w")) {
+            jeniskelamin = scan.nextLine();
+            if ((!jeniskelamin.equalsIgnoreCase("p")) && (!jeniskelamin.equalsIgnoreCase("w"))) {
                 System.out.println("Jenis kelamin tidak sesuai !");
             }
-        } while (!jeniskelamin.equalsIgnoreCase("p") || !jeniskelamin.equalsIgnoreCase("w"));
+        } while ((!jeniskelamin.equalsIgnoreCase("p")) && (!jeniskelamin.equalsIgnoreCase("w")));
         System.out.println("");
 
         System.out.println("***************************************************************");
@@ -111,14 +122,14 @@ public class CariKalori {
         System.out.println("");
 
         return kalori;
-    }
 
-    public void bmi() {
+    }
+        public void bmi() {
         float massa, tinggi, bmi;
         System.out.println("Menghitung BMI:");
-        System.out.println("Masukkan berat badan (kg): ");
+        System.out.print("Masukkan berat badan (kg): ");
         massa = scan.nextFloat();
-        System.out.println("Masukkan tinggi badan (m) : ");
+        System.out.print("Masukkan tinggi badan (m) : ");
         tinggi = scan.nextFloat();
         bmi = massa / (tinggi * tinggi);
         System.out.println("BMI : " + bmi);
@@ -156,7 +167,7 @@ public class CariKalori {
                 System.out.println("Tidak ada pilihan yang tersedia");
                 break;
             }
-            System.out.println("Nama olahraga: ");
+            System.out.print("Nama olahraga: ");
             tambah = scan.next() + scan.nextLine();
             olahraga.add(tambah);
             System.out.println("Olahraga berhasil ditambahkan !!");
@@ -167,7 +178,7 @@ public class CariKalori {
             } else {
                 lagi = false;
             }
-        } while(lagi);
+        } while (lagi);
         System.out.println("");
         return olahraga;
     }
@@ -184,9 +195,15 @@ public class CariKalori {
         System.out.println("Edit daftar olahraga no berapa?(pilih 0 untuk keluar): ");
         angka = scan.nextInt();
         if (angka != 0) {
-            System.out.println("Nama olahraga: ");
-            nama = scan.nextLine();
-            olahraga.set(angka - 1, nama);
+            if (angka > olahraga.size()){
+                System.out.println("Tidak ada yang bisa diedit !!");
+            }
+            else{
+                System.out.println("Nama olahraga: ");
+                nama = scan.nextLine() + scan.nextLine();
+                olahraga.set(angka - 1, nama);
+                System.out.println("Olahraga berhasil diedit !!");
+            }
         }
         System.out.println("");
         return olahraga;
@@ -209,7 +226,7 @@ public class CariKalori {
         System.out.println("");
         return olahraga;
     }
-    public ArrayList<String> daftarmakan(ArrayList<String> olahraga)
+ public ArrayList<String> daftarmakan(ArrayList<String> makan)
     {
         System.out.println("Daftar Makan: ");
         for (int i = 0; i < makan.size(); i++) {
@@ -218,30 +235,37 @@ public class CariKalori {
         System.out.println("");
         return makan;
     }
-    public ArrayList<String> editmakan(Array<String> olahraga)
+ 
+    public ArrayList<String> editmakan(ArrayList<String> makan)
     {
         int angka, pilih;
-        String makan;
+        String makanan;
         System.out.print("Edit daftar makanan");
         System.out.println("Daftar Makanan: ");
-        for (int i = 0; i < makanan.size(); i++) {
-            System.out.println((i + 1) + ". " + makanan.get(i));
+        for (int i = 0; i < makan.size(); i++) {
+            System.out.println((i + 1) + ". " + makan.get(i));
         }
         System.out.println("");
         System.out.println("Edit daftar makanan nomor berapa?(pilih 0 untuk keluar): ");
         angka = scan.nextInt();
         if (angka != 0) {
+            
+            if (makan.size() > angka){
             System.out.println("Nama makanan: ");
-            makan = scan.nextLine();
-            makan.set(angka - 1, makan);
+            makanan = scan.nextLine()+scan.nextLine();
+            makan.set(angka - 1, makanan);
+            }
+            else{
+                System.out.println("Tidak ada yang bisa diedit !!");
+            }
         }
         System.out.println("");
         return makan;
     }
-    public ArrayList <String> hapusmakan(Array<String> olahraga)
+    
+    public ArrayList <String> hapusmakan(ArrayList<String> makan)
     {
         int angka, pilih;
-        String makan;
         System.out.print("Hapus daftar makanan = ");
         System.out.println("Daftar Makanan: ");
         for (int i = 0; i < makan.size(); i++) {
@@ -256,23 +280,29 @@ public class CariKalori {
         System.out.println("");
         return makan;
     }
-    public ArrayList <String> targetkalori(Array<String> olahraga)
+    
+    public ArrayList <String> targetkalori(ArrayList<String> olahraga)
     {
         int target;
+        return olahraga;
     }
     public void keluar()
     {
         System.exit(0);
     }
-    public static void main(String[] args) {
+    
+     public static void main(String[] args) {
         int pilih;
         float bmr;
         ArrayList<String> olahraga = new ArrayList<String>();
+        ArrayList<String> makan = new ArrayList<String>();
         System.out.println("Starting the Application");
         CariKalori fungsi = new CariKalori();
         fungsi.boot();
+        System.out.println("");
         do {
             pilih = fungsi.pilih();
+            System.out.println("");
             switch (pilih) {
                 case 1: {
                     bmr = fungsi.kalhari();
@@ -299,25 +329,31 @@ public class CariKalori {
                     break;
                 }
                 case 7: {
-                    fungsi.daftarmakan(olahraga);
+                    fungsi.daftarmakan(makan);
                     break;
                 }
                 case 8: {
-                    fungsi.editmakan(olahraga);
+                    fungsi.editmakan(makan);
                     break;
                 }
                 case 9: {
-                    fungsi.hapusmakan(olahraga);
+                    fungsi.hapusmakan(makan);
                     break;
                 }
                 case 10: {
-
+                    fungsi.targetkalori(makan);
+                    break;
                 }
                 case 11: {
                     fungsi.keluar();
                     break;
                 }
+                default: {
+                    System.out.println("Tidak ada pada menu !!");
+                }
             }
+
         } while (pilih != 11);
+
     }
 }
