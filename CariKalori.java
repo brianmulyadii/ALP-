@@ -39,7 +39,7 @@ public class CariKalori {
         }
         System.out.println("");
     }
-
+//test test
     public int pilih() {
         int pilih;
         System.out.println("Menu: ");
