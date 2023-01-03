@@ -69,6 +69,7 @@ public class CariKalori {
         System.out.println("12. Keluar");
         System.out.print("Masukkan pilihan: ");
         
+        //error check pada pilihan jika tidak masuk integer
         while(!scan.hasNextInt()){
             System.out.println("Input tidak valid !!");
             scan.next();
@@ -402,7 +403,7 @@ public class CariKalori {
                 }
             }
 
-        } while (pilih != 11);
+        } while (pilih != 12);
 
     }
 }
