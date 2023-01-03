@@ -100,7 +100,7 @@ public class CariKalori {
 
         do {
             System.out.print("Pria atau Wanita(P/W): ");
-            jeniskelamin = scan.nextLine();
+            jeniskelamin = scan.next() + scan.nextLine();
             if ((!jeniskelamin.equalsIgnoreCase("p")) && (!jeniskelamin.equalsIgnoreCase("w"))) {
                 System.out.println("Jenis kelamin tidak sesuai !");
             }
