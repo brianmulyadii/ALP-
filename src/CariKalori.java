@@ -68,6 +68,12 @@ public class CariKalori {
         System.out.println("11. Target Kalori");
         System.out.println("12. Keluar");
         System.out.print("Masukkan pilihan: ");
+        
+        while(!scan.hasNextInt()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Masukkan pilihan: ");
+        }
         pilih = scan.nextInt();
         return pilih;
     }
@@ -341,6 +347,7 @@ public class CariKalori {
         do {
             pilih = fungsi.pilih();
             System.out.println("");
+            
             switch (pilih) {
                 case 1: {
                     bmr = fungsi.kalhari();
