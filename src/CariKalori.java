@@ -64,7 +64,8 @@ public class CariKalori {
         System.out.println("7. Melihat daftar makanan ");
         System.out.println("8. Mengedit daftar makanan");
         System.out.println("9. Menghapus daftar makanan");
-        System.out.println("10. Keluar");
+        System.out.println("10. Target kalori hari ini");
+        System.out.println("11. Keluar");
         System.out.print("Masukkan pilihan: ");
         pilih = scan.nextInt();
         return pilih;
@@ -346,7 +347,7 @@ public class CariKalori {
                 }
                 case 11: {
                     fungsi.keluar();
-                    break;
+                    break;;
                 }
                 default: {
                     System.out.println("Tidak ada pada menu !!");
