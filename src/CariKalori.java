@@ -158,12 +158,22 @@ public class CariKalori {
         float massa, tinggi, bmi;
         System.out.println("Menghitung BMI:");
         System.out.print("Masukkan berat badan (kg): ");
+        while(!scan.hasNextFloat()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Masukkan berat badan (kg): ");
+        }
         massa = scan.nextFloat();
         System.out.print("Masukkan tinggi badan (cm) : ");
+        while(!scan.hasNextFloat()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Masukkan tinggi badan (cm) : ");
+        }
         tinggi = scan.nextFloat();
         tinggi = tinggi/100;
         bmi = massa / (tinggi * tinggi);
-        System.out.println("BMI : " + bmi);
+        System.out.println("BMI : " + dfrmt.format(bmi));
         System.out.println("");
     }
 
