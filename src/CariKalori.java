@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Filbert Patricio & Bryan
+ * @Author Filbert Patricio & Bryan
  */
 public class CariKalori {
 
@@ -62,10 +62,11 @@ public class CariKalori {
         System.out.println("5. Mengedit daftar olahraga");
         System.out.println("6. Menghapus daftar olahraga");
         System.out.println("7. Melihat daftar makanan ");
-        System.out.println("8. Mengedit daftar makanan");
-        System.out.println("9. Menghapus daftar makanan");
-        System.out.println("10. Target kalori hari ini");
-        System.out.println("11. Keluar");
+        System.out.println("8. Menambah daftar makanan");
+        System.out.println("9. Mengedit daftar makanan");
+        System.out.println("10. Menghapus daftar makanan");
+        System.out.println("11. Target Kalori");
+        System.out.println("12. Keluar");
         System.out.print("Masukkan pilihan: ");
         pilih = scan.nextInt();
         return pilih;
@@ -236,6 +237,42 @@ public class CariKalori {
         System.out.println("");
         return makan;
     }
+ public ArrayList<String> tambahmakan(ArrayList<String> makan) {
+        String tambah, ya;
+        boolean lagi;
+        int angka;
+        System.out.println("Tambah daftar makanan: ");
+        System.out.println("Daftar Makanan: ");
+        for (int i = 0; i < makan.size(); i++) {
+            System.out.println((i + 1) + ". " + makan.get(i));
+        }
+        System.out.println("");
+        do {
+            System.out.println("1. Tambah makanan");
+            System.out.println("2. Kembali ke menu awal");
+            System.out.print("Pilihan: ");
+            angka = scan.nextInt();
+            if (angka == 2) {
+                break;
+            } else if (angka != 1) {
+                System.out.println("Tidak ada pilihan yang tersedia");
+                break;
+            }
+            System.out.print("Nama makanan: ");
+            tambah = scan.next() + scan.nextLine();
+            makan.add(tambah);
+            System.out.println("Makanan berhasil ditambahkan !!");
+            System.out.println("Apakah anda ingin menambah daftar makanan lagi ? (y/n)");
+            ya = scan.next();
+            if (ya.equalsIgnoreCase("y")) {
+                lagi = true;
+            } else {
+                lagi = false;
+            }
+        } while (lagi);
+        System.out.println("");
+        return makan;
+    }
  
     public ArrayList<String> editmakan(ArrayList<String> makan)
     {
@@ -334,18 +371,22 @@ public class CariKalori {
                     break;
                 }
                 case 8: {
-                    fungsi.editmakan(makan);
+                    fungsi.tambahmakan(makan);
                     break;
                 }
                 case 9: {
-                    fungsi.hapusmakan(makan);
+                    fungsi.editmakan(makan);
                     break;
                 }
                 case 10: {
-                    fungsi.targetkalori(makan);
+                    fungsi.hapusmakan(makan);
                     break;
                 }
                 case 11: {
+                    fungsi.targetkalori(makan);
+                    break;
+                }
+                case 12: {
                     fungsi.keluar();
                     break;
                 }
