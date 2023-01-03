@@ -70,6 +70,7 @@ public class CariKalori {
         System.out.print("Masukkan pilihan: ");
         
         //error check pada pilihan jika tidak masuk integer
+
         while(!scan.hasNextInt()){
             System.out.println("Input tidak valid !!");
             scan.next();
@@ -86,12 +87,32 @@ public class CariKalori {
         double faktor;
         String jeniskelamin;
         System.out.print("Masukkan berat badan(Kg): ");
+        while(!scan.hasNextFloat()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Masukkan berat badan (Kg): ");
+        }
         berat = scan.nextFloat();
         System.out.print("Masukkan tinggi badan (cm): ");
+        while(!scan.hasNextFloat()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Masukkan tinggi badan (cm): ");
+        }
         tinggi = scan.nextFloat();
         System.out.print("Masukkan umur anda (tahun): ");
+        while(!scan.hasNextFloat()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Masukkan umur anda(tahun): ");
+        }
         umur = scan.nextInt();
         System.out.print("Berapa kali anda berolahraga selama seminggu: ");
+        while(!scan.hasNextInt()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Berapa kali anda berolahraga selama seminggu: ");
+        }
         olahraga = scan.nextInt();
         if (olahraga == 0) {
             faktor = 1.2;
@@ -138,8 +159,9 @@ public class CariKalori {
         System.out.println("Menghitung BMI:");
         System.out.print("Masukkan berat badan (kg): ");
         massa = scan.nextFloat();
-        System.out.print("Masukkan tinggi badan (m) : ");
+        System.out.print("Masukkan tinggi badan (cm) : ");
         tinggi = scan.nextFloat();
+        tinggi = tinggi/100;
         bmi = massa / (tinggi * tinggi);
         System.out.println("BMI : " + bmi);
         System.out.println("");
