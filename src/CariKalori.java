@@ -347,7 +347,7 @@ public class CariKalori {
                 }
                 case 11: {
                     fungsi.keluar();
-                    break;;
+                    break;
                 }
                 default: {
                     System.out.println("Tidak ada pada menu !!");
