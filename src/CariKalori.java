@@ -68,10 +68,9 @@ public class CariKalori {
         System.out.println("11. Target Kalori");
         System.out.println("12. Keluar");
         System.out.print("Masukkan pilihan: ");
-        
-        //error check pada pilihan jika tidak masuk integer
 
-        while(!scan.hasNextInt()){
+        //error check pada pilihan jika tidak masuk integer
+        while (!scan.hasNextInt()) {
             System.out.println("Input tidak valid !!");
             scan.next();
             System.out.print("Masukkan pilihan: ");
@@ -87,28 +86,28 @@ public class CariKalori {
         double faktor;
         String jeniskelamin;
         System.out.print("Masukkan berat badan(Kg): ");
-        while(!scan.hasNextFloat()){
+        while (!scan.hasNextFloat()) {
             System.out.println("Input tidak valid !!");
             scan.next();
             System.out.print("Masukkan berat badan (Kg): ");
         }
         berat = scan.nextFloat();
         System.out.print("Masukkan tinggi badan (cm): ");
-        while(!scan.hasNextFloat()){
+        while (!scan.hasNextFloat()) {
             System.out.println("Input tidak valid !!");
             scan.next();
             System.out.print("Masukkan tinggi badan (cm): ");
         }
         tinggi = scan.nextFloat();
         System.out.print("Masukkan umur anda (tahun): ");
-        while(!scan.hasNextFloat()){
+        while (!scan.hasNextFloat()) {
             System.out.println("Input tidak valid !!");
             scan.next();
             System.out.print("Masukkan umur anda(tahun): ");
         }
         umur = scan.nextInt();
         System.out.print("Berapa kali anda berolahraga selama seminggu: ");
-        while(!scan.hasNextInt()){
+        while (!scan.hasNextInt()) {
             System.out.println("Input tidak valid !!");
             scan.next();
             System.out.print("Berapa kali anda berolahraga selama seminggu: ");
@@ -154,24 +153,25 @@ public class CariKalori {
         return kalori;
 
     }
-        public void bmi() {
+
+    public void bmi() {
         float massa, tinggi, bmi;
         System.out.println("Menghitung BMI:");
         System.out.print("Masukkan berat badan (kg): ");
-        while(!scan.hasNextFloat()){
+        while (!scan.hasNextFloat()) {
             System.out.println("Input tidak valid !!");
             scan.next();
             System.out.print("Masukkan berat badan (kg): ");
         }
         massa = scan.nextFloat();
         System.out.print("Masukkan tinggi badan (cm) : ");
-        while(!scan.hasNextFloat()){
+        while (!scan.hasNextFloat()) {
             System.out.println("Input tidak valid !!");
             scan.next();
             System.out.print("Masukkan tinggi badan (cm) : ");
         }
         tinggi = scan.nextFloat();
-        tinggi = tinggi/100;
+        tinggi = tinggi / 100;
         bmi = massa / (tinggi * tinggi);
         System.out.println("BMI : " + dfrmt.format(bmi));
         System.out.println("");
@@ -201,6 +201,11 @@ public class CariKalori {
             System.out.println("1. Tambah olahraga");
             System.out.println("2. Kembali ke menu awal");
             System.out.print("Pilihan: ");
+            while (!scan.hasNextInt()) {
+                System.out.println("Input tidak valid !!");
+                scan.next();
+                System.out.print("Pilihan: ");
+            }
             angka = scan.nextInt();
             if (angka == 2) {
                 break;
@@ -233,18 +238,25 @@ public class CariKalori {
             System.out.println((i + 1) + ". " + olahraga.get(i));
         }
         System.out.println("");
-        System.out.println("Edit daftar olahraga no berapa?(pilih 0 untuk keluar): ");
+        System.out.print("Edit daftar olahraga no berapa?(pilih 0 untuk keluar): ");
+        while (!scan.hasNextInt()) {
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Edit daftar olahraga no berapa?(pilih 0 untuk keluar): ");
+        }
         angka = scan.nextInt();
-        if (angka != 0) {
-            if (angka > olahraga.size()){
+        if (angka > 0) {
+            if (angka > olahraga.size()) {
                 System.out.println("Tidak ada yang bisa diedit !!");
-            }
-            else{
-                System.out.println("Nama olahraga: ");
+            } else {
+                System.out.print("Nama olahraga: ");
                 nama = scan.nextLine() + scan.nextLine();
                 olahraga.set(angka - 1, nama);
                 System.out.println("Olahraga berhasil diedit !!");
             }
+        } 
+        else if (angka < 0){
+            System.out.println("Angka tidak valid !!");
         }
         System.out.println("");
         return olahraga;
@@ -259,16 +271,28 @@ public class CariKalori {
             System.out.println((i + 1) + ". " + olahraga.get(i));
         }
         System.out.println("");
-        System.out.println("Hapus daftar olahraga no berapa?(pilih 0 untuk keluar): ");
+        System.out.print("Hapus daftar olahraga no berapa?(pilih 0 untuk keluar): ");
+        while (!scan.hasNextInt()) {
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Hapus daftar olahraga no berapa?(pilih 0 untuk keluar): ");
+        }
         angka = scan.nextInt();
-        if (angka != 0) {
-            olahraga.remove(angka - 1);
+        if (angka > 0) {
+            if (angka > olahraga.size()) {
+                System.out.println("Tidak ada yang bisa dihapus !!");
+            } else {
+                olahraga.remove(angka - 1);
+            }
+        }
+        else if (angka < 0){
+            System.out.println("Angka tidak valid !!");
         }
         System.out.println("");
         return olahraga;
     }
- public ArrayList<String> daftarmakan(ArrayList<String> makan)
-    {
+
+    public ArrayList<String> daftarmakan(ArrayList<String> makan) {
         System.out.println("Daftar Makan: ");
         for (int i = 0; i < makan.size(); i++) {
             System.out.println((i + 1) + ". " + makan.get(i));
@@ -276,7 +300,8 @@ public class CariKalori {
         System.out.println("");
         return makan;
     }
- public ArrayList<String> tambahmakan(ArrayList<String> makan) {
+
+    public ArrayList<String> tambahmakan(ArrayList<String> makan) {
         String tambah, ya;
         boolean lagi;
         int angka;
@@ -290,6 +315,11 @@ public class CariKalori {
             System.out.println("1. Tambah makanan");
             System.out.println("2. Kembali ke menu awal");
             System.out.print("Pilihan: ");
+            while (!scan.hasNextInt()) {
+                System.out.println("Input tidak valid !!");
+                scan.next();
+                System.out.print("Pilihan: ");
+            }
             angka = scan.nextInt();
             if (angka == 2) {
                 break;
@@ -312,36 +342,41 @@ public class CariKalori {
         System.out.println("");
         return makan;
     }
- 
-    public ArrayList<String> editmakan(ArrayList<String> makan)
-    {
+
+    public ArrayList<String> editmakan(ArrayList<String> makan) {
         int angka, pilih;
         String makanan;
-        System.out.print("Edit daftar makanan");
+        System.out.print("Edit daftar makanan: ");
         System.out.println("Daftar Makanan: ");
         for (int i = 0; i < makan.size(); i++) {
             System.out.println((i + 1) + ". " + makan.get(i));
         }
         System.out.println("");
-        System.out.println("Edit daftar makanan nomor berapa?(pilih 0 untuk keluar): ");
+        System.out.print("Edit daftar makanan nomor berapa?(pilih 0 untuk keluar): ");
+        while(!scan.hasNextInt()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Edit daftar makanan no berapa?(pilih 0 untuk keluar): ");
+        }
         angka = scan.nextInt();
-        if (angka != 0) {
-            
-            if (makan.size() > angka){
-            System.out.println("Nama makanan: ");
-            makanan = scan.nextLine()+scan.nextLine();
-            makan.set(angka - 1, makanan);
-            }
-            else{
+        if (angka > 0) {
+
+            if (makan.size() > angka) {
+                System.out.println("Nama makanan: ");
+                makanan = scan.nextLine() + scan.nextLine();
+                makan.set(angka - 1, makanan);
+            } else {
                 System.out.println("Tidak ada yang bisa diedit !!");
             }
+        }
+        else if (angka < 0){
+            System.out.println("Angka tidak valid !!");
         }
         System.out.println("");
         return makan;
     }
-    
-    public ArrayList <String> hapusmakan(ArrayList<String> makan)
-    {
+
+    public ArrayList<String> hapusmakan(ArrayList<String> makan) {
         int angka, pilih;
         System.out.print("Hapus daftar makanan = ");
         System.out.println("Daftar Makanan: ");
@@ -349,26 +384,37 @@ public class CariKalori {
             System.out.println((i + 1) + ". " + makan.get(i));
         }
         System.out.println("");
-        System.out.println("Hapus daftar makanan no berapa?(pilih 0 untuk keluar): ");
+        System.out.print("Hapus daftar makanan no berapa?(pilih 0 untuk keluar): ");
+        while(!scan.hasNextInt()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Hapus daftar makanan no berapa?(pilih 0 untuk keluar): ");
+        }
         angka = scan.nextInt();
-        if (angka != 0) {
-            makan.remove(angka - 1);
+        if (angka > 0) {
+            if (angka > makan.size()) {
+                System.out.println("Tidak ada yang bisa dihapus !!");
+            } else {
+                makan.remove(angka - 1);
+            }
+        }
+        else if (angka < 0){
+            System.out.println("Angka tidak valid !!");
         }
         System.out.println("");
         return makan;
     }
-    
-    public ArrayList <String> targetkalori(ArrayList<String> olahraga)
-    {
+
+    public ArrayList<String> targetkalori(ArrayList<String> olahraga) {
         int target;
         return olahraga;
     }
-    public void keluar()
-    {
+
+    public void keluar() {
         System.exit(0);
     }
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         int pilih;
         float bmr;
         ArrayList<String> olahraga = new ArrayList<String>();
@@ -380,7 +426,7 @@ public class CariKalori {
         do {
             pilih = fungsi.pilih();
             System.out.println("");
-            
+
             switch (pilih) {
                 case 1: {
                     bmr = fungsi.kalhari();
