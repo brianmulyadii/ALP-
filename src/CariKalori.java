@@ -52,8 +52,9 @@ public class CariKalori {
         System.out.println("");
     }
 
-    public int pilih() {
+    public int pilih(int kalori) {
         int pilih;
+        System.out.println("Target kalori harian = "+ kalori);
         System.out.println("Menu: ");
         System.out.println("1. Menghitung kalori harian yang dibutuhkan");
         System.out.println("2. Menghitung BMI");
@@ -405,9 +406,17 @@ public class CariKalori {
         return makan;
     }
 
-    public ArrayList<String> targetkalori(ArrayList<String> olahraga) {
+    public int targetkalori() {
         int target;
-        return olahraga;
+        System.out.print("Target kalori yang ingin dicapai : ");
+        while(!scan.hasNextInt()){
+            System.out.println("Input tidak valid !!");
+            scan.next();
+            System.out.print("Target kalori yang ingin dicapai : ");
+        }
+        target = scan.nextInt();
+        
+        return target;
     }
 
     public void keluar() {
@@ -415,7 +424,7 @@ public class CariKalori {
     }
 
     public static void main(String[] args) {
-        int pilih;
+        int pilih,kalori;
         float bmr;
         ArrayList<String> olahraga = new ArrayList<String>();
         ArrayList<String> makan = new ArrayList<String>();
@@ -423,8 +432,9 @@ public class CariKalori {
         CariKalori fungsi = new CariKalori();
         fungsi.boot();
         System.out.println("");
+        kalori = 0;
         do {
-            pilih = fungsi.pilih();
+            pilih = fungsi.pilih(kalori);
             System.out.println("");
 
             switch (pilih) {
@@ -469,7 +479,7 @@ public class CariKalori {
                     break;
                 }
                 case 11: {
-                    fungsi.targetkalori(makan);
+                    kalori = fungsi.targetkalori();
                     break;
                 }
                 case 12: {
