@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @Author Filbert Patricio & Bryan
+ * @Author Filbert Patricio & Brian
  */
 public class CariKalori {
 
