@@ -492,3 +492,4 @@ public class CariKalori {
             }
     }while(pilih != 12);
 }
+}
