@@ -490,8 +490,5 @@ public class CariKalori {
                     System.out.println("Tidak ada pada menu !!");
                 }
             }
-
-        } while (pilih != 12);
-
-    }
+    }while(pilih != 12);
 }
