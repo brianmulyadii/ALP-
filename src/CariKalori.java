@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @Author Filbert Patricio & Bryan
+ * @Author Filbert Patricio & Brian
  */
 public class CariKalori {
 
@@ -570,8 +570,13 @@ public class CariKalori {
                     System.out.println("Tidak ada pada menu !!");
                 }
             }
+<<<<<<< HEAD
 
         } while (pilih != 13);
 
     }
+=======
+    }while(pilih != 12);
+>>>>>>> 7d516d7aceccd20d5df8850ed7e7eab5ff3f5992
+}
 }
