@@ -428,7 +428,7 @@ public class CariKalori {
     }
 
     public void simulasi(int kalori, ArrayList<Integer> kaloriolahraga, ArrayList<Integer> kalorimakan) {
-        int makankali, olahragakali, pilihmakan, totalkalorimakan,piliholahraga,totalkaloriolahraga,total;
+        int makankali, olahragakali, pilihmakan, totalkalorimakan, piliholahraga, totalkaloriolahraga, total;
         totalkalorimakan = 0;
         totalkaloriolahraga = 0;
         System.out.println("");
@@ -441,19 +441,19 @@ public class CariKalori {
         }
         makankali = scan.nextInt();
         for (int i = 0; i < makankali; i++) {
-            do{
-            System.out.print("pilih makanan ke-" + (i+1) + "(masukkan nomor makanan pilihan) : ");
-            while (!scan.hasNextInt()) {
-                System.out.println("Input tidak valid !!");
-                scan.next();
-                System.out.print("pilih makanan ke-" + (i+1) + "(masukkan nomor makanan pilihan) : ");
-            }
-            pilihmakan = scan.nextInt();
-            if ((kalorimakan.size() < pilihmakan) && (pilihmakan<0) ){
-                System.out.println("Input tidak valid !!");
-            }
-            }while((kalorimakan.size() < pilihmakan) && (pilihmakan<0));
-            totalkalorimakan = totalkalorimakan + kalorimakan.get(pilihmakan-1);
+            do {
+                System.out.print("pilih makanan ke-" + (i + 1) + "(masukkan nomor makanan pilihan) : ");
+                while (!scan.hasNextInt()) {
+                    System.out.println("Input tidak valid !!");
+                    scan.next();
+                    System.out.print("pilih makanan ke-" + (i + 1) + "(masukkan nomor makanan pilihan) : ");
+                }
+                pilihmakan = scan.nextInt();
+                if ((kalorimakan.size() < pilihmakan) && (pilihmakan < 0)) {
+                    System.out.println("Input tidak valid !!");
+                }
+            } while ((kalorimakan.size() < pilihmakan) && (pilihmakan < 0));
+            totalkalorimakan = totalkalorimakan + kalorimakan.get(pilihmakan - 1);
         }
         System.out.print("Olahraga berapa kali ? ");
         while (!scan.hasNextInt()) {
@@ -463,25 +463,24 @@ public class CariKalori {
         }
         olahragakali = scan.nextInt();
         for (int i = 0; i < olahragakali; i++) {
-            do{
-            System.out.print("pilih olahraga ke-" + (i+1) + "(masukkan nomor makanan pilihan) : ");
-            while (!scan.hasNextInt()) {
-                System.out.println("Input tidak valid !!");
-                scan.next();
-                System.out.print("pilih olahraga ke-" + (i+1) + "(masukkan nomor makanan pilihan) : ");
-            }
-            piliholahraga = scan.nextInt();
-            if (kaloriolahraga.size() < piliholahraga){
-                System.out.println("Input tidak valid !!");
-            }
-            }while(kalorimakan.size() < piliholahraga);
-            totalkaloriolahraga = totalkaloriolahraga + kaloriolahraga.get(piliholahraga-1);
+            do {
+                System.out.print("pilih olahraga ke-" + (i + 1) + "(masukkan nomor makanan pilihan) : ");
+                while (!scan.hasNextInt()) {
+                    System.out.println("Input tidak valid !!");
+                    scan.next();
+                    System.out.print("pilih olahraga ke-" + (i + 1) + "(masukkan nomor makanan pilihan) : ");
+                }
+                piliholahraga = scan.nextInt();
+                if (kaloriolahraga.size() < piliholahraga) {
+                    System.out.println("Input tidak valid !!");
+                }
+            } while (kalorimakan.size() < piliholahraga);
+            totalkaloriolahraga = totalkaloriolahraga + kaloriolahraga.get(piliholahraga - 1);
         }
         total = totalkalorimakan - totalkaloriolahraga;
-        if (total < kalori){
+        if (total < kalori) {
             System.out.println("Target kalori harian sudah tercapai !!");
-        }
-        else{
+        } else {
             System.out.println("Target kalori harian belum tercapai !!");
         }
     }
@@ -570,13 +569,10 @@ public class CariKalori {
                     System.out.println("Tidak ada pada menu !!");
                 }
             }
-<<<<<<< HEAD
 
         } while (pilih != 13);
 
     }
-=======
-    }while(pilih != 12);
->>>>>>> 7d516d7aceccd20d5df8850ed7e7eab5ff3f5992
 }
-}
+
+
